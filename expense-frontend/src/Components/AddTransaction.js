@@ -1,23 +1,41 @@
-import React,{useState} from "react";
+import React,{useState,useContext} from "react";
+import {GlobalContext} from '../GlobalContext/GlobalState'
+import { v1 as uuidv4 } from 'uuid';
 
 export const AddTransaction = () => {
+
+     const {addTransaction} = useContext(GlobalContext)
 
     const [text,newText] = useState('')
     const [amount,newAmount] = useState(0)
 
+    const onSubmit = e => {
+        alert("Button clicked")
+        e.preventDefault();
+
+        const newvalue = {
+           id:uuidv4(),
+            text,
+            amount:+amount
+
+        }
+
+        addTransaction(newvalue)
+    }
+
   return (
     <div>
-      <form>
+      <form onSubmit={onSubmit}>
         <div className="form-control">
           <label htmlFor="text">Text</label>
-          <input value={text} onChange={(e)=>newText(e.target.value)} type="text" id="text" placeholder="Enter text..." />
+          <input type="text" value={text} onChange={(e)=>newText(e.target.value)} id="text" placeholder="Enter text..." />
         </div>
         <div className="form-control">
           <label htmlFor="amount">
             Amount <br />
             (negative - expense, positive - income)
           </label>
-          <input value={amount} onChange={(e)=> newAmount(e.target.value)} type="number" id="amount" placeholder="Enter amount..." />
+          <input type="number" value={amount} onChange={(e)=> newAmount(e.target.value)} id="amount" placeholder="Enter amount..." />
         </div>
         <button className="btn">Add transaction</button>
       </form>
