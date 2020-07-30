@@ -18,7 +18,7 @@ export const GlobalContext = createContext(initialState)
 export const GlobalProvider = ({children}) => {
 
     //Track action from all the component and update the state 
-    const [state,dispatch] = useReducer(AppReducer,initialState)
+    const [state,dispatch] = useReducer(AppReducer,initialState) 
 
     //Actions 
     const deleteTransaction = (id) => {
