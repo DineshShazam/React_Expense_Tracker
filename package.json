@@ -10,7 +10,7 @@
     "server": "nodemon --exec babel-node server.js",
     "client": "npm start --prefix Client",
     "prod-client":"cd ./Client && npm run build",
-    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false cd Client && npm install && npm run build && cd ../ node build/dist/server.js && ",
+    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false node build/dist/server.js && cd Client && npm install && npm run build",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "prod": "npm run prod-server && node build/dist/server.js"
   },
