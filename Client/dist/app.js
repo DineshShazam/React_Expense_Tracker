@@ -41,9 +41,9 @@ if (process.env.NODE_ENV == 'development') {
 }
 
 if (process.env.NODE_ENV == 'production') {
-  app.use(_express["default"]["static"](_path["default"].join(__dirname, '../../Client/build')));
+  app.use(_express["default"]["static"](_path["default"].join(__dirname, './Client/node-build')));
   app.get('*', function (req, res) {
-    res.sendFile(_path["default"].join(__dirname, '../../Client/build'));
+    res.sendFile(_path["default"].join(__dirname, './Client/node-build/index.html'));
   });
 }
 
