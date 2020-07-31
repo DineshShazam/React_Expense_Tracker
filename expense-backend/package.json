@@ -4,13 +4,15 @@
   "description": "sample expense tracker backend ",
   "main": "server.js",
   "scripts": {
-    "build": "npm run clean && babel .  --ignore node_modules --out-dir dist",
+    "prod-server": "npm run clean && babel .  --ignore node_modules --out-dir dist",
     "clean": "rimraf dist",
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon --exec babel-node server.js",
     "client": "npm start --prefix ../expense-frontend",
+    "prod-client":"cd ../expense-frontend && npm run build",
+    "heroku-postbuild":"npm run prod-server && npm run prod-client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "prod": "npm run build && node dist/server.js"
+    "prod": "npm run prod-server && node dist/server.js"
   },
   "author": "Shazam",
   "license": "ISC",
