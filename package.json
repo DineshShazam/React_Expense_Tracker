@@ -4,13 +4,13 @@
   "description": "sample expense tracker backend ",
   "main": "server.js",
   "scripts": {
-    "prod-server": "npm run clean && babel .  --ignore node_modules,Client --out-dir dist",
-    "clean": "rimraf dist",
+    "prod-server": "npm run clean && babel . --ignore node_modules,Client --out-dir build/dist",
+    "clean": "rimraf build && mkdir build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon --exec babel-node server.js",
     "client": "npm start --prefix Client",
     "prod-client":"cd ./Client && npm run build",
-    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm install @babel/core @babel/cli && npm run prod-server && npm install --production --prefix Client && npm run build --prefix Client",
+    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false node build/dist/server.js && npm install --prefix Client && npm run build --prefix Client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "prod": "npm run prod-server && node dist/server.js"
   },
