@@ -11,7 +11,7 @@
     "client": "npm start --prefix Client",
     "prod-client":"cd ./Client && npm run build",
     "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false cd Client && npm install && npm run build",
-    "start": "node ./build/dist/server.js",
+    "start": "node app/build/dist/server.js",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "prod": "npm run prod-server && node dist/server.js"
   },
