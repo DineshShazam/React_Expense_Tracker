@@ -10,8 +10,7 @@ export const AddTransaction = () => {
     const [amount,newAmount] = useState(0)
 
     const onSubmit = e => {
-        alert("Button clicked")
-        e.preventDefault();
+      e.preventDefault();
 
         const newvalue = {
            id:uuidv4(),
@@ -19,8 +18,9 @@ export const AddTransaction = () => {
             amount:+amount
 
         }
-
         addTransaction(newvalue)
+        window.location.reload();
+
     }
 
   return (
@@ -28,14 +28,14 @@ export const AddTransaction = () => {
       <form onSubmit={onSubmit}>
         <div className="form-control">
           <label htmlFor="text">Text</label>
-          <input type="text" value={text} onChange={(e)=>newText(e.target.value)} id="text" placeholder="Enter text..." />
+          <input type="text"  onChange={(e)=>newText(e.target.value)} id="text" placeholder="Enter text..." />
         </div>
         <div className="form-control">
           <label htmlFor="amount">
             Amount <br />
             (negative - expense, positive - income)
           </label>
-          <input type="number" value={amount} onChange={(e)=> newAmount(e.target.value)} id="amount" placeholder="Enter amount..." />
+          <input type="number" onChange={(e)=> newAmount(e.target.value)} id="amount" placeholder="Enter amount..." />
         </div>
         <button className="btn">Add transaction</button>
       </form>

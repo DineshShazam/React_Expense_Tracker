@@ -1,9 +1,13 @@
 {
     "presets": [ "@babel/preset-env" ],
     "plugins": ["@babel/plugin-transform-runtime"],
+    "env":{
+        "production":{
+            "compact":false
+        }
+    },
     "ignore":[
         "node_modules",
-        "public",
-        "config"
+        "public"
     ]
 }
