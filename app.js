@@ -20,17 +20,17 @@ app.use(cors());
 
 app.use('/',router)
 
-if(process.env.NODE_ENV == 'development'){
-    app.use(morgan('dev'))
-}
+// if(process.env.NODE_ENV == 'development'){
+//     app.use(morgan('dev'))
+// }
 
-if(process.env.NODE_ENV == 'production') {
+// if(process.env.NODE_ENV == 'production') {
 
-    app.use(express.static(path.join(__dirname,'./Client/node-build')))
+    app.use(express.static(path.join(__dirname,'./Client/dist')))
 
-    app.get('*',(req,res) => { res.sendFile(path.join(__dirname,'./Client/node-build/index.html')) })
+    app.get('*',(req,res) => { res.sendFile(path.join(__dirname,'./Client/dist/index.html')) })
 
-}
+//}
 
 
 

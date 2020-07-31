@@ -34,18 +34,15 @@ console.log(_path["default"].join(__dirname, './Client/build'));
 (0, _mongoDB["default"])();
 app.use(_bodyParser["default"].json());
 app.use((0, _cors["default"])());
-app.use('/', _index["default"]);
+app.use('/', _index["default"]); // if(process.env.NODE_ENV == 'development'){
+//     app.use(morgan('dev'))
+// }
+// if(process.env.NODE_ENV == 'production') {
 
-if (process.env.NODE_ENV == 'development') {
-  app.use((0, _morgan["default"])('dev'));
-}
-
-if (process.env.NODE_ENV == 'production') {
-  app.use(_express["default"]["static"](_path["default"].join(__dirname, './Client/node-build')));
-  app.get('*', function (req, res) {
-    res.sendFile(_path["default"].join(__dirname, './Client/node-build/index.html'));
-  });
-}
+app.use(_express["default"]["static"](_path["default"].join(__dirname, './Client/dist')));
+app.get('*', function (req, res) {
+  res.sendFile(_path["default"].join(__dirname, './Client/dist/index.html'));
+}); //}
 
 var _default = app;
 exports["default"] = _default;
