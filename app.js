@@ -10,7 +10,7 @@ const app = express()
 dotenv.config({path:'./config/config.env'})
 
 console.log(process.env.NODE_ENV)
-console.log(path.join(__dirname,'./Client/build'))
+console.log(path.join(__dirname,'../../Client/build'))
 
 mongoDriver()
 
