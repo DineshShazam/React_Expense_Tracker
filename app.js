@@ -10,7 +10,7 @@ const app = express()
 dotenv.config({path:'./config/config.env'})
 
 console.log(process.env.NODE_ENV)
-console.log(path.join(__dirname,'../expense-frontend/build'))
+console.log(path.join(__dirname,'./Client/build'))
 
 mongoDriver()
 
@@ -26,9 +26,9 @@ if(process.env.NODE_ENV == 'development'){
 
 if(process.env.NODE_ENV == 'production') {
 
-    app.use(express.static(path.join(__dirname,'../../expense-frontend/build')))
+    app.use(express.static(path.join(__dirname,'../Client/build')))
 
-    app.get('*',(req,res) => { res.sendFile(path.join(__dirname,'../../expense-frontend/build/index.html')) })
+    app.get('*',(req,res) => { res.sendFile(path.join(__dirname,'../client/build/index.html')) })
 
 }
 
